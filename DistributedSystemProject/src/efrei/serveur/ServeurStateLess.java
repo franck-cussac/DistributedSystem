@@ -41,7 +41,7 @@ public class ServeurStateLess {
     System.out.println("server: generated skeleton and stub");
 
     // register the remote object's stub in the registry
-    Registry registry = LocateRegistry.getRegistry();
+    Registry registry = LocateGlobalRegistry.getRegistry();
     registry.rebind(SERVICE_NAME, stub);
     System.out.println("server: registered remote object's stub");
 
