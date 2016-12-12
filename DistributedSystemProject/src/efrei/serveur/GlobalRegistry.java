@@ -10,7 +10,12 @@ import java.util.Map;
 
 public class GlobalRegistry implements Registry {
 	
+	private String name;
 	private Map<String, Remote> map = new HashMap<>();
+	
+	public GlobalRegistry(String name) {
+		this.name = name;
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
