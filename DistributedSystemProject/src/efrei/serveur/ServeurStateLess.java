@@ -15,7 +15,7 @@ import efrei.remote.*;
  * incoming requests forever.
  *
  */
-public class Serveur {
+public class ServeurStateLess {
 
   //
   // CONSTANTS
