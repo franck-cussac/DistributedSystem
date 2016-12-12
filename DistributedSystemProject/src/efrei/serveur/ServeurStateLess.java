@@ -29,8 +29,7 @@ public class ServeurStateLess {
 
     // check the name of the local machine (two methods)
     System.out.println("server: running on host " + InetAddress.getLocalHost());
-    System.out.println("server: hostname property "
-            + System.getProperty("java.rmi.server.hostname"));
+    System.out.println("server: hostname property " + System.getProperty("java.rmi.server.hostname"));
 
     // instanciate the remote object
     Sorter sorter = new SimpleSorter();
