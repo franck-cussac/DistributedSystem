@@ -10,7 +10,7 @@ import java.rmi.registry.LocateRegistry;
  * part of the RMI runtime.
  *
  */
-public class Registry {
+public class MyRegistry {
 
   //
   // CONSTANTS
@@ -30,7 +30,7 @@ public class Registry {
     System.out.println("registry: listening on port " + REGISTRY_PORT);
 
     // block forever
-    Registry.class.wait();
+    MyRegistry.class.wait();
     System.out.println("registry: exiting (should not happen)");
 
   }
