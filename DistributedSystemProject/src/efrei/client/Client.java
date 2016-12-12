@@ -23,7 +23,7 @@ public class Client {
   //
   private static String SERVICE_NAME_STATEFULL = "Repository";
   private static String SERVICE_NAME_STATELESS = "Sorter";
-  private static String SERVICE_HOST = "192.168.1.164";
+  private static String SERVICE_HOST = "192.168.1.206";
 
   //
   // MAIN
@@ -33,54 +33,52 @@ public class Client {
     // locate the registry that runs on the remote object's server
     Registry registry = LocateGlobalRegistry.getRegistry(SERVICE_HOST);
     System.out.println("client: retrieved registry");
-
+    System.out.println("registry : " + registry);
+    
     // retrieve the stub of the remote object by its name
     Sorter sorter = (Sorter) registry.lookup(SERVICE_NAME_STATELESS);
+    Sorter sorter1 = (Sorter) registry.lookup(SERVICE_NAME_STATELESS);
+    Sorter sorter2 = (Sorter) registry.lookup(SERVICE_NAME_STATELESS);
     System.out.println("client: retrieved Sorter stub");
+    System.out.println("sorter : " + sorter);
 
     // call the remote object to perform sorts and reverse sorts
     List<String> list = Arrays.asList("3", "5", "1", "2", "4");
-    System.out.println("client: sending " + list);
-
     list = sorter.sort(list);
-    System.out.println("client: received " + list);
-
     list = Arrays.asList("mars", "saturne", "neptune", "jupiter");
-    System.out.println("client: sending " + list);
-
     list = sorter.reverseSort(list);
-    System.out.println("client: received " + list);
 
-    // main terminates here
-    System.out.println("client: exiting");
-    
-    // call the remote object to perform sorts and reverse sorts
-    System.out.println("client: sending " + "setProperty sur key = key et value = value");
+    list = Arrays.asList("3", "5", "1", "2", "4");
+    list = sorter1.sort(list);
+    list = Arrays.asList("mars", "saturne", "neptune", "jupiter");
+    list = sorter1.reverseSort(list);
+
+    list = Arrays.asList("3", "5", "1", "2", "4");
+    list = sorter2.sort(list);
+    list = Arrays.asList("mars", "saturne", "neptune", "jupiter");
+    list = sorter2.reverseSort(list);
     
     
     Repository repo = (Repository) registry.lookup(SERVICE_NAME_STATEFULL);
+    Repository repo1 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL);
+    Repository repo2 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL);
     System.out.println("client: retrieved Sorter stub");
     
     repo.setProperty("key", "value");
-
-    System.out.println("client: received ");
-
-    System.out.println("client: sending ");
-    
-    String s = repo.getProperty("key");
-    
-    System.out.println("client: received " + s);
-    
-    System.out.println("client: sending ");
-    
+    repo.getProperty("key");
     repo.removeProperty("key");
+    repo.getProperty("key");
     
-    System.out.println("client: received " + s);
-    System.out.println("client: sending ");
+    repo1.setProperty("key", "value");
+    repo1.getProperty("key");
+    repo1.removeProperty("key");
+    repo1.getProperty("key");
     
-    String s2 = repo.getProperty("key");
+    repo2.setProperty("key", "value");
+    repo2.getProperty("key");
+    repo2.removeProperty("key");
+    repo2.getProperty("key");
     
-    System.out.println("client: received " + s2);
 
     // main terminates here
     System.out.println("client: exiting");
