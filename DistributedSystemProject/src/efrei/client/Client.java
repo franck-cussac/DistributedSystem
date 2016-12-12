@@ -24,6 +24,10 @@ public class Client {
   private static String SERVICE_NAME_STATEFULL = "Repository";
   private static String SERVICE_NAME_STATELESS = "Sorter";
   private static String SERVICE_HOST = "192.168.1.206";
+  
+  // Si true, l'algorithme utilisé est circulaire (round-robin) 
+  // sinon, l'algorithme de répartition utilise des méthodes java qui calculent les performances CPU 
+  private static final boolean REPARTITION_ROUND_ROBIN = true;
 
   //
   // MAIN

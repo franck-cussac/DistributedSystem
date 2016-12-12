@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
  * Interface of a property repository.
  *
  */
-public interface Repository extends Remote{
+public interface Repository extends Remote {
 
   public String getProperty(String key) throws RemoteException;
 
