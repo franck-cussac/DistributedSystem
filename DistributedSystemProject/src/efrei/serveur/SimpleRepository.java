@@ -4,7 +4,7 @@ import java.util.*;
 
 import efrei.remote.Repository;
 
-public class SimpleRepository implements Repository{
+public class SimpleRepository implements Repository {
 	private Map<String, String> repo = new HashMap<>();
 	@Override
 	public String getProperty(String key) {
