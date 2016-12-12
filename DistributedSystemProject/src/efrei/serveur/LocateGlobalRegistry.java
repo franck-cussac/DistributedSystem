@@ -4,6 +4,8 @@ import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.*;
+import java.rmi.server.UnicastRemoteObject;
+
 
 public class LocateGlobalRegistry {
 	
@@ -15,7 +17,10 @@ public class LocateGlobalRegistry {
 		Registry registry = LocateRegistry.createRegistry(REGISTRY_PORT);
 		
 		GlobalRegistry glob_reg = new GlobalRegistry(REGISTRY_NAME);
-		registry.bind(REGISTRY_NAME, glob_reg);
+		// create a skeleton and a stub for that remote object
+		GlobalRegistry stub = (GlobalRegistry) UnicastRemoteObject.exportObject(glob_reg, 0);
+	    System.out.println("server: generated skeleton and stub");
+		registry.bind(REGISTRY_NAME, stub);
 		
 		return registry;
 	}
