@@ -5,7 +5,7 @@ import java.rmi.registry.Registry;
 import java.util.Arrays;
 import java.util.List;
 
-import efrei.remote.Sorter;
+import efrei.remote.*;
 
 /**
  * Client program.
@@ -20,8 +20,9 @@ public class Client {
   //
   // CONSTANTS
   //
-  private static String SERVICE_NAME = "Sorter";
-  private static String SERVICE_HOST = "localhost";
+  private static String SERVICE_NAME_STATEFULL = "Repository";
+  private static String SERVICE_NAME_STATELESS = "Sorter";
+  private static String SERVICE_HOST = "192.168.1.164";
 
   //
   // MAIN
@@ -33,7 +34,7 @@ public class Client {
     System.out.println("client: retrieved registry");
 
     // retrieve the stub of the remote object by its name
-    Sorter sorter = (Sorter) registry.lookup(SERVICE_NAME);
+    Sorter sorter = (Sorter) registry.lookup(SERVICE_NAME_STATELESS);
     System.out.println("client: retrieved Sorter stub");
 
     // call the remote object to perform sorts and reverse sorts
@@ -48,6 +49,37 @@ public class Client {
 
     list = sorter.reverseSort(list);
     System.out.println("client: received " + list);
+
+    // main terminates here
+    System.out.println("client: exiting");
+    
+    // call the remote object to perform sorts and reverse sorts
+    System.out.println("client: sending " + "setProperty sur key = key et value = value");
+    
+    
+    Repository repo = (Repository) registry.lookup(SERVICE_NAME_STATEFULL);
+    System.out.println("client: retrieved Sorter stub");
+    
+    repo.setProperty("key", "value");
+
+    System.out.println("client: received ");
+
+    System.out.println("client: sending ");
+    
+    String s = repo.getProperty("key");
+    
+    System.out.println("client: received " + s);
+    
+    System.out.println("client: sending ");
+    
+    repo.removeProperty("key");
+    
+    System.out.println("client: received " + s);
+    System.out.println("client: sending ");
+    
+    String s2 = repo.getProperty("key");
+    
+    System.out.println("client: received " + s2);
 
     // main terminates here
     System.out.println("client: exiting");
