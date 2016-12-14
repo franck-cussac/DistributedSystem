@@ -13,23 +13,13 @@ import java.util.Map;
 import efrei.remote.IStatefull;
 import efrei.remote.IStateless;
 
-public class GlobalRegistry implements Registry {
+public class GlobalRegistry implements IGlobalRegistry {
 	
-	@SuppressWarnings("unused")
-	private String name;
 	private Map<String, List<Remote>> map = new HashMap<>();
 	
 	private Map<String, Integer> map_it = new HashMap<>();
 	private Map<String, Integer> map_nb_obj = new HashMap<>();
 	
-	public GlobalRegistry(String name) {
-		this.name = name;
-	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public Remote lookup(String name) throws RemoteException, NotBoundException, AccessException {
@@ -81,7 +71,8 @@ public class GlobalRegistry implements Registry {
 		return null;
 	}
 	
-	// retourne la liste des stub qui correspond à un service
+	// retourne la liste des stubs qui correspond à un service
+	@Override
 	public List<Remote> list(String service) throws RemoteException, AccessException {
 		return map.get(service);
 	}

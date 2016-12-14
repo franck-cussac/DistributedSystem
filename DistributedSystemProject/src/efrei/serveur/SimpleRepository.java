@@ -25,15 +25,14 @@ public class SimpleRepository implements Repository {
 	@Override
 	public void setProperty(String key, String value) throws AccessException, RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println("Server setted");
 		try {
-			List<Remote> list = ((GlobalRegistry)LocateGlobalRegistry.getRegistry()).list(SERVICE_NAME);
+			List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(SERVICE_NAME);
 			
-			for(Remote elem : list){
-				SimpleRepository repo = (SimpleRepository)elem;
+			for(int i = 1; i < list.size(); i++){
+				Repository repo = (Repository)list.get(i);
 				
-				if(repo != this){
-					repo.setProperty(key, value, this.cpt);
-				}
+				repo.setProperty(key, value, this.cpt);
 			}
 			this.cpt++;
 		} catch (NotBoundException e) {
@@ -44,10 +43,11 @@ public class SimpleRepository implements Repository {
 		this.repo.put(key, value);
 	}
 	
-	public void setProperty(String key, String value, int num){
+	public void setProperty(String key, String value, int num) throws RemoteException {
 		while(num != this.cpt){
 			
 		}
+		System.out.println("Server setted");
 		this.repo.put(key,  value);
 		this.cpt++;
 	}
@@ -56,22 +56,21 @@ public class SimpleRepository implements Repository {
 		while(num != this.cpt){
 			
 		}
+		System.out.println("Server removed");
 		this.repo.remove(key);
 		this.cpt++;
 	}
 
 	@Override
-	public void removeProperty(String key) {
+	public void removeProperty(String key) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			List<Remote> list = ((GlobalRegistry)LocateGlobalRegistry.getRegistry()).list(SERVICE_NAME);
+			List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(SERVICE_NAME);
 			
-			for(Remote elem : list){
-				SimpleRepository repo = (SimpleRepository)elem;
+			for(int i = 1; i < list.size(); i++){
+				Repository repo = (Repository)list.get(i);
 				
-				if(repo != this){
-					repo.removeProperty(key, this.cpt);
-				}
+				repo.removeProperty(key, this.cpt);
 			}
 			this.cpt++;
 		} catch (NotBoundException | RemoteException e) {

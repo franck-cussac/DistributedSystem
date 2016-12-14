@@ -17,11 +17,11 @@ public class LocateGlobalRegistry {
 	public static Registry createRegistry() throws RemoteException, AlreadyBoundException {
 		Registry registry = LocateRegistry.createRegistry(REGISTRY_PORT);
 		
-		GlobalRegistry glob_reg = new GlobalRegistry(REGISTRY_NAME);
+		GlobalRegistry glob_reg = new GlobalRegistry();
 		// create a skeleton and a stub for that remote object
 		Remote stub = UnicastRemoteObject.exportObject(glob_reg, 0);
 	    System.out.println("server: generated skeleton and stub");
-		registry.bind(REGISTRY_NAME, stub);
+		registry.rebind(REGISTRY_NAME, stub);
 		
 		return registry;
 	}
@@ -31,6 +31,6 @@ public class LocateGlobalRegistry {
 	}
 	
 	public static Registry getRegistry(String host) throws AccessException, RemoteException, NotBoundException {
-		return (Registry) LocateRegistry.getRegistry(host).lookup(REGISTRY_NAME);
+		return (Registry)LocateRegistry.getRegistry(host).lookup(REGISTRY_NAME);
 	}
 }

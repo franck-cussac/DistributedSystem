@@ -19,7 +19,7 @@ public class ServeurStatefullPassif {
   //
   // CONSTANTS
   //
-  private static final String SERVICE_NAME = "Repository";
+  private static final String SERVICE_NAME = "Repository passif";
 
   //
   // MAIN
