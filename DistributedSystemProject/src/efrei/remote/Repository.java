@@ -18,4 +18,5 @@ public interface Repository extends IStatefull {
   
   public void removeProperty(String key, int num) throws RemoteException;
 
+  public void setService_name(String service_name) throws RemoteException;
 }

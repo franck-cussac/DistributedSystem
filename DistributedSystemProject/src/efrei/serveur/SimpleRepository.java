@@ -13,7 +13,9 @@ import efrei.remote.Repository;
 public class SimpleRepository implements Repository {
 	private Map<String, String> repo = new HashMap<>();
 	private int cpt = 0;
-	private static final String SERVICE_NAME = "Repository";
+	private String service_name;
+	
+	
 	@Override
 	public String getProperty(String key) {
 		// TODO Auto-generated method stub
@@ -27,7 +29,7 @@ public class SimpleRepository implements Repository {
 		// TODO Auto-generated method stub
 		System.out.println("Server setted");
 		try {
-			List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(SERVICE_NAME);
+			List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(service_name);
 			
 			for(int i = 1; i < list.size(); i++){
 				Repository repo = (Repository)list.get(i);
@@ -65,7 +67,7 @@ public class SimpleRepository implements Repository {
 	public void removeProperty(String key) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(SERVICE_NAME);
+			List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(service_name);
 			
 			for(int i = 1; i < list.size(); i++){
 				Repository repo = (Repository)list.get(i);
@@ -82,6 +84,15 @@ public class SimpleRepository implements Repository {
 		repo.remove(key);
 	}
 	
+
+	public String getService_name() {
+		return service_name;
+	}
+
+	public void setService_name(String service_name) throws RemoteException {
+		this.service_name = service_name;
+	}
+
 
 	private class Compteur implements Comparable<Compteur> {
 		private int time;
