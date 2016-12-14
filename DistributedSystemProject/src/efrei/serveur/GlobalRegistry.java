@@ -35,7 +35,13 @@ public class GlobalRegistry implements Registry {
 	public Remote lookup(String name) throws RemoteException, NotBoundException, AccessException {
 		// TODO Auto-generated method stub
 		Remote stub = map.get(name).get(map_it.get(name) % map_nb_obj.get(name));
-		map_it.put(name, map_it.get(name) + 1);
+		
+		if(stub instanceof IStatefull){
+			stub = map.get(name).get(0);
+		}
+		else if(stub instanceof IStateless){
+			map_it.put(name, map_it.get(name) + 1);
+		}
 		
 		return stub;
 	}
