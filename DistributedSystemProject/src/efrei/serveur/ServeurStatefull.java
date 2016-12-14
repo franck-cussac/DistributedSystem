@@ -1,8 +1,7 @@
 package efrei.serveur;
 
 import java.net.InetAddress;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import java.rmi.registry.*;
 import java.rmi.server.UnicastRemoteObject;
 
 import efrei.remote.*;

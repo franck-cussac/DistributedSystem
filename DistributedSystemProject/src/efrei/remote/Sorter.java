@@ -1,6 +1,5 @@
 package efrei.remote;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
  * </ul>
  *
  */
-public interface Sorter extends Remote {
+public interface Sorter extends IStateless {
 
   public List<String> sort(List<String> list) throws RemoteException;
 

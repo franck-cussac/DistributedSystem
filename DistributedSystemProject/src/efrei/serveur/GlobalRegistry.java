@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class GlobalRegistry implements Registry {
 	
+	@SuppressWarnings("unused")
 	private String name;
 	private Map<String, List<Remote>> map = new HashMap<>();
 	

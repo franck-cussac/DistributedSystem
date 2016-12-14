@@ -1,13 +1,12 @@
 package efrei.remote;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
  * Interface of a property repository.
  *
  */
-public interface Repository extends Remote {
+public interface Repository extends IStatefull {
 
   public String getProperty(String key) throws RemoteException;
 

@@ -1,7 +1,6 @@
 package efrei.client;
 
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import java.rmi.registry.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class Client {
   
   // Si true, l'algorithme utilisé est circulaire (round-robin) 
   // sinon, l'algorithme de répartition utilise des méthodes java qui calculent les performances CPU 
-  private static final boolean REPARTITION_ROUND_ROBIN = true;
+  //private static final boolean REPARTITION_ROUND_ROBIN = true;
 
   //
   // MAIN

@@ -1,7 +1,6 @@
 package efrei.serveur;
 
 import java.net.InetAddress;
-import java.rmi.registry.LocateRegistry;
 
 /**
  * Registry program.
