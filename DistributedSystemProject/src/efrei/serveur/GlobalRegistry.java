@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import efrei.remote.IStatefull;
+import efrei.remote.IStateless;
+
 public class GlobalRegistry implements Registry {
 	
 	@SuppressWarnings("unused")
@@ -31,8 +34,10 @@ public class GlobalRegistry implements Registry {
 	@Override
 	public Remote lookup(String name) throws RemoteException, NotBoundException, AccessException {
 		// TODO Auto-generated method stub
+		Remote stub = map.get(name).get(map_it.get(name) % map_nb_obj.get(name));
 		map_it.put(name, map_it.get(name) + 1);
-		return map.get(name).get((map_it.get(name) - 1) % map_nb_obj.get(name));
+		
+		return stub;
 	}
 
 	@Override
@@ -68,6 +73,11 @@ public class GlobalRegistry implements Registry {
 	public String[] list() throws RemoteException, AccessException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	// retourne la liste des stub qui correspond à un service
+	public List<Remote> list(String service) throws RemoteException, AccessException {
+		return map.get(service);
 	}
 
 }
