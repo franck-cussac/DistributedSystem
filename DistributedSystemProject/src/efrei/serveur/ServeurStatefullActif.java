@@ -19,7 +19,7 @@ public class ServeurStatefullActif {
   //
   // CONSTANTS
   //
-  private static final String SERVICE_NAME = "Repository";
+  private static final String SERVICE_NAME = "Repository actif";
 
   //
   // MAIN
@@ -33,6 +33,7 @@ public class ServeurStatefullActif {
 
 	    // instanciate the remote object
 	    Repository repo = new SimpleRepository();
+	    repo.setService_name(SERVICE_NAME);
 	    System.out.println("server: instanciated SimpleSorter");
 
 	    // create a skeleton and a stub for that remote object

@@ -20,7 +20,8 @@ public class Client {
   //
   // CONSTANTS
   //
-  private static String SERVICE_NAME_STATEFULL = "Repository";
+	  private static String SERVICE_NAME_STATEFULL_ACTIF = "Repository actif";
+	  private static String SERVICE_NAME_STATEFULL_PASSIF = "Repository passif";
   private static String SERVICE_NAME_STATELESS = "Sorter";
   private static String SERVICE_HOST = "localhost";
   
@@ -62,9 +63,9 @@ public class Client {
     list = sorter2.reverseSort(list);
     
     
-    Repository repo = (Repository) registry.lookup(SERVICE_NAME_STATEFULL);
-    Repository repo1 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL);
-    Repository repo2 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL);
+    Repository repo = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_ACTIF);
+    Repository repo1 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_ACTIF);
+    Repository repo2 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_ACTIF);
     System.out.println("client: retrieved Sorter stub");
     
     repo.setProperty("key", "value");
@@ -81,6 +82,27 @@ public class Client {
     repo2.getProperty("key");
     repo2.removeProperty("key");
     repo2.getProperty("key");
+    
+    
+    Repository repo3 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_PASSIF);
+    Repository repo4 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_PASSIF);
+    Repository repo5 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_PASSIF);
+    System.out.println("client: retrieved Sorter stub");
+    
+    repo3.setProperty("key", "value");
+    repo3.getProperty("key");
+    //repo3.removeProperty("key");
+    repo3.getProperty("key");
+    
+    repo4.setProperty("key", "value");
+    repo4.getProperty("key");
+    //repo4.removeProperty("key");
+    repo4.getProperty("key");
+    
+    repo5.setProperty("key", "value");
+    repo5.getProperty("key");
+    //repo5.removeProperty("key");
+    repo5.getProperty("key");
     
 
     // main terminates here

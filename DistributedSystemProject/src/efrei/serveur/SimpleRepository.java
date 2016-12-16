@@ -15,6 +15,10 @@ public class SimpleRepository implements Repository {
 	private int cpt = 0;
 	private String service_name;
 	
+	@Override
+	public Map<String, String> getMap(){
+		return repo;
+	}
 	
 	@Override
 	public String getProperty(String key) {
@@ -28,18 +32,20 @@ public class SimpleRepository implements Repository {
 	public void setProperty(String key, String value) throws AccessException, RemoteException {
 		// TODO Auto-generated method stub
 		System.out.println("Server setted");
-		try {
-			List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(service_name);
-			
-			for(int i = 1; i < list.size(); i++){
-				Repository repo = (Repository)list.get(i);
+		if(this.service_name == "Repository actif"){
+			try {
+				List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(service_name);
 				
-				repo.setProperty(key, value, this.cpt);
+				for(int i = 1; i < list.size(); i++){
+					Repository repo = (Repository)list.get(i);
+					
+					repo.setProperty(key, value, this.cpt);
+				}
+				this.cpt++;
+			} catch (NotBoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			this.cpt++;
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		this.repo.put(key, value);
@@ -66,26 +72,27 @@ public class SimpleRepository implements Repository {
 	@Override
 	public void removeProperty(String key) throws RemoteException {
 		// TODO Auto-generated method stub
-		try {
-			List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(service_name);
-			
-			for(int i = 1; i < list.size(); i++){
-				Repository repo = (Repository)list.get(i);
+		if(this.service_name == "Repository actif"){
+			try {
+				List<Remote> list = ((IGlobalRegistry)LocateGlobalRegistry.getRegistry()).list(service_name);
 				
-				repo.removeProperty(key, this.cpt);
+				for(int i = 1; i < list.size(); i++){
+					Repository repo = (Repository)list.get(i);
+					
+					repo.removeProperty(key, this.cpt);
+				}
+				this.cpt++;
+			} catch (NotBoundException | RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			this.cpt++;
-		} catch (NotBoundException | RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		
 		System.out.println("Server removed : key = " + key + " value = " + repo.get(key));
 		repo.remove(key);
 	}
 	
 
-	public String getService_name() {
+	public String getService_name() throws RemoteException {
 		return service_name;
 	}
 
