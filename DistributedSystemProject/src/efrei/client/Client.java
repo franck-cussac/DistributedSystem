@@ -20,8 +20,8 @@ public class Client {
   //
   // CONSTANTS
   //
-	  private static String SERVICE_NAME_STATEFULL_ACTIF = "Repository actif";
-	  private static String SERVICE_NAME_STATEFULL_PASSIF = "Repository passif";
+  private static String SERVICE_NAME_STATEFULL_ACTIF = "Repository actif";
+  private static String SERVICE_NAME_STATEFULL_PASSIF = "Repository passif";
   private static String SERVICE_NAME_STATELESS = "Sorter";
   private static String SERVICE_HOST = "localhost";
   
