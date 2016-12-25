@@ -44,15 +44,15 @@ public class Demo {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// on crée un panel qui s'organisera comme une grille de 4 par 9
-		GridLayout l = new GridLayout(4, 9);
-		JPanel panel = new JPanel(l);
+		JPanel panel = new JPanel();
+		JPanel panel2 = new JPanel();
 		// on ajoute tout de suite le panel à notre fenètre
 		panel.setVisible(true);
-		frame.add(panel);
+		panel2.setVisible(true);
 		
 		
 		// on crée les boutons
-		JButton add_client = new JButton("Ajouter un client");
+		JButton add_client = new JButton("Tester toutes les requêtes");
 		JButton add_server_stateless = new JButton("Ajouter un serveur stateless");
 		JButton add_server_statefull_actif = new JButton("Ajouter un serveur statefull actif");
 		JButton add_server_statefull_passif = new JButton("Ajouter un server statefull passif");
@@ -60,13 +60,24 @@ public class Demo {
 		JButton request_statefull_actif = new JButton("Envoyer une requête statefull actif");
 		JButton request_statefull_passif = new JButton("Envoyer une requête statefull passif");
 		
-		panel.add(add_client);
-		panel.add(add_server_stateless);
-		panel.add(add_server_statefull_actif);
-		panel.add(add_server_statefull_passif);
-		panel.add(request_stateless);
-		panel.add(request_statefull_actif);
-		panel.add(request_statefull_passif);
+	    //On définit le layout en lui indiquant qu'il travaillera en ligne
+	    panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
+	    panel.add(add_client);
+	    panel.add(add_server_stateless);
+	    panel.add(add_server_statefull_actif);
+	    panel.add(add_server_statefull_passif);
+	    
+	    panel2.setLayout(new BoxLayout(panel2, BoxLayout.LINE_AXIS));
+	    panel2.add(request_stateless);
+	    panel2.add(request_statefull_actif);
+	    panel2.add(request_statefull_passif);
+	    
+	    JPanel b4 = new JPanel();
+	    //On positionne maintenant ces trois lignes en colonne
+	    b4.setLayout(new BoxLayout(b4, BoxLayout.PAGE_AXIS));
+	    b4.add(panel);
+	    b4.add(panel2);
+	    frame.add(b4);
 		
 		for(Component elem : panel.getComponents()){
 			elem.setVisible(true);
