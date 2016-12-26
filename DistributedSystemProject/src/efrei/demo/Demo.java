@@ -24,6 +24,12 @@ public class Demo {
 	private static String SERVICE_NAME_STATELESS = "Sorter";
 	private static String SERVICE_HOST = "localhost";
 	
+	private static int cpt_stateless = 0;
+	private static int cpt_statefull_actif = 0;
+	private static int cpt_statefull_passif = 0;
+	
+	private static JTextArea textarea;
+	
 	public static void main(String[] args){
 		Thread t = new Thread(){
 			@Override
@@ -78,6 +84,13 @@ public class Demo {
 	    b4.add(panel);
 	    b4.add(panel2);
 	    frame.add(b4);
+	    
+	    JPanel b5 = new JPanel();
+	    b5.setLayout(new BoxLayout(b5, BoxLayout.PAGE_AXIS));
+	    textarea = new JTextArea();
+	    JScrollPane sp = new JScrollPane(textarea);
+	    b5.add(sp);
+	    b4.add(b5);
 		
 		for(Component elem : panel.getComponents()){
 			elem.setVisible(true);
@@ -105,6 +118,8 @@ public class Demo {
 				// TODO Auto-generated method stub
 				try {
 					ServeurStateLess.main(null);
+					cpt_stateless++;
+					textarea.setText(textarea.getText() + "Vous avez maintenant " + cpt_stateless + " serveur stateless\n");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -119,6 +134,8 @@ public class Demo {
 				// TODO Auto-generated method stub
 				try {
 					ServeurStatefullActif.main(null);
+					cpt_statefull_actif++;
+					textarea.setText(textarea.getText() + "Vous avez maintenant " + cpt_statefull_actif + " serveur statefull actif\n");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -133,6 +150,8 @@ public class Demo {
 				// TODO Auto-generated method stub
 				try {
 					ServeurStatefullPassif.main(null);
+					cpt_statefull_passif++;
+					textarea.setText(textarea.getText() + "Vous avez maintenant " + cpt_statefull_passif + " serveur statefull passif\n");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -150,7 +169,9 @@ public class Demo {
 					registry = LocateGlobalRegistry.getRegistry(SERVICE_HOST);
 					Sorter sorter = (Sorter) registry.lookup(SERVICE_NAME_STATELESS);
 					List<String> list = Arrays.asList("3", "5", "1", "2", "4");
+					textarea.setText(textarea.getText() + "sended : " + list + "\n");
 				    list = sorter.sort(list);
+					textarea.setText(textarea.getText() + "received : " + list + "\n");
 				    list = Arrays.asList("mars", "saturne", "neptune", "jupiter");
 				    list = sorter.reverseSort(list);
 				}
@@ -169,10 +190,16 @@ public class Demo {
 			    try {
 					Registry registry = LocateGlobalRegistry.getRegistry(SERVICE_HOST);
 				    Repository repo = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_ACTIF);
-				    repo.setProperty("key", "value");
-				    repo.getProperty("key");
-				    repo.removeProperty("key");
-				    repo.getProperty("key");
+				    String key = "test";
+				    String value = "test value";
+					textarea.setText(textarea.getText() + "sended : key = " + key + " value = " + value + "\n");
+				    repo.setProperty(key, value);
+				    value = repo.getProperty(key);
+					textarea.setText(textarea.getText() + "received : key = " + key + " value = " + value + "\n");
+				    repo.removeProperty(key);
+					textarea.setText(textarea.getText() + "removed key = " + key + "\n");
+				    value = repo.getProperty(key);
+					textarea.setText(textarea.getText() + "get key = " + key + " value = " + value + "\n");
 				}
 			    catch (RemoteException | NotBoundException e) {
 					// TODO Auto-generated catch block
@@ -188,13 +215,24 @@ public class Demo {
 				// TODO Auto-generated method stub
 			    try {
 					Registry registry = LocateGlobalRegistry.getRegistry(SERVICE_HOST);
-				    Repository repo3 = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_PASSIF);
+				    Repository repo = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_PASSIF);
 				    
-				    repo3.setProperty("key", "value");
-				    repo3.getProperty("key");
-				    repo3.removeProperty("key");
-				    repo3.getProperty("key");
-				    repo3.setProperty("key", "value2");
+
+				    String key = "test";
+				    String value = "test value";
+					textarea.setText(textarea.getText() + "sended : key = " + key + " value = " + value + "\n");
+				    repo.setProperty(key, value);
+				    value = repo.getProperty(key);
+					textarea.setText(textarea.getText() + "received : key = " + key + " value = " + value + "\n");
+				    repo.removeProperty(key);
+					textarea.setText(textarea.getText() + "removed key = " + key + "\n");
+				    value = repo.getProperty(key);
+					textarea.setText(textarea.getText() + "get key = " + key + " value = " + value + "\n");
+					value = "test value2";
+					textarea.setText(textarea.getText() + "sended : key = " + key + " value = " + value + "\n");
+				    repo.setProperty(key, value);
+				    value = repo.getProperty(key);
+					textarea.setText(textarea.getText() + "get key = " + key + " value = " + value + "\n");
 				}
 			    catch (RemoteException | NotBoundException e) {
 					// TODO Auto-generated catch block

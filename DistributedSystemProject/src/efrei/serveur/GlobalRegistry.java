@@ -46,7 +46,8 @@ public class GlobalRegistry implements IGlobalRegistry {
 			map_it.put(name, 0);
 		}
 		map.get(name).add(obj);
-		map_nb_obj.put(name, map_nb_obj.get(name) + 1);
+		map_nb_obj.put(name, map_nb_obj.get(name));
+		map_nb_obj.put(name, map_nb_obj.get(name)+1);
 	}
 
 	@Override
@@ -63,7 +64,8 @@ public class GlobalRegistry implements IGlobalRegistry {
 			map_it.put(name, 0);
 		}
 		map.get(name).add(obj);
-		map_nb_obj.put(name, map_nb_obj.get(name) + 1);
+		map_nb_obj.put(name, map_nb_obj.get(name));
+		map_nb_obj.put(name, map_nb_obj.get(name)+1);
 	}
 
 	@Override

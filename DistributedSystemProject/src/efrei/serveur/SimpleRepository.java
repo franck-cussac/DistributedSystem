@@ -99,40 +99,4 @@ public class SimpleRepository implements Repository {
 	public void setService_name(String service_name) throws RemoteException {
 		this.service_name = service_name;
 	}
-
-
-	private class Compteur implements Comparable<Compteur> {
-		private int time;
-		private int id_server;
-		private SimpleRepository repo;
-		
-		public Compteur(SimpleRepository repo, int time, int id_server){
-			this.repo = repo;
-			this.time = time;
-			this.id_server = id_server;
-		}
-		
-		@Override
-		public int compareTo(Compteur arg0) {
-			// TODO Auto-generated method stub
-			
-			if(this.time < arg0.time) {
-				return -1;
-			}
-			else if(this.time > arg0.time) {
-				return 1;
-			}
-			else {
-				if(id_server < arg0.id_server) {
-					return -1;
-				}
-				else if(id_server > arg0.id_server) {
-					return 1;
-				}
-				else {
-					return 0;
-				}
-			}
-		}
-	}
 }

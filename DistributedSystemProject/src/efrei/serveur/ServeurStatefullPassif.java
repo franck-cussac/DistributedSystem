@@ -74,7 +74,7 @@ class MyTask extends TimerTask {
 			System.out.println("mise à jours de mon passif");
 			
 			for(String key_set : repo_actif.getMap().keySet()){
-				this.repo.setProperty(key_set, this.repo.getProperty(key_set));
+				this.repo.setProperty(key_set, repo_actif.getProperty(key_set));
 				System.out.println("mise à jours de mon passif : " + this.repo.getProperty(key_set));
 			}
 			
