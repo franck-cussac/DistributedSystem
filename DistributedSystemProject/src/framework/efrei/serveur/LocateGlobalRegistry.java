@@ -1,4 +1,4 @@
-package efrei.serveur;
+package framework.efrei.serveur;
 import java.rmi.AccessException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;

@@ -1,4 +1,4 @@
-package efrei.remote;
+package framework.efrei.remote;
 
 import java.rmi.RemoteException;
 import java.util.List;

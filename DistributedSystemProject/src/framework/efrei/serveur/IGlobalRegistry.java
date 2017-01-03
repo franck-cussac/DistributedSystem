@@ -1,4 +1,4 @@
-package efrei.serveur;
+package framework.efrei.serveur;
 
 import java.rmi.AccessException;
 import java.rmi.AlreadyBoundException;
@@ -24,7 +24,7 @@ public interface IGlobalRegistry extends Registry {
 	@Override
 	public String[] list() throws RemoteException, AccessException;
 	
-	// retourne la liste des stubs qui correspond à un service
+	// retourne la liste des stubs qui correspond ï¿½ un service
 	public List<Remote> list(String service) throws RemoteException, AccessException;
 	
 	

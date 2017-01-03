@@ -1,4 +1,4 @@
-package efrei.serveur;
+package framework.efrei.serveur;
 
 import java.net.InetAddress;
 import java.rmi.NotBoundException;
@@ -8,7 +8,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import efrei.remote.*;
+import framework.efrei.remote.*;
 
 /**
  * Server program.
@@ -49,7 +49,7 @@ public class ServeurStatefullPassif {
 	    registry.rebind(SERVICE_NAME, stub);
 	    System.out.println("server: registered remote object's stub");
 	    
-	    // création de la tache asynchrone qui va mettre à jours la valeur du Remote
+	    // crï¿½ation de la tache asynchrone qui va mettre ï¿½ jours la valeur du Remote
 	    if(registry.list(SERVICE_NAME).size() > 1){
 	    	System.out.println("le serveur passif s'abonne au premier");
 	    	MyTask task = new MyTask();
@@ -71,11 +71,11 @@ class MyTask extends TimerTask {
 			IGlobalRegistry reg = (IGlobalRegistry)LocateGlobalRegistry.getRegistry();
 			
 			Repository repo_actif = (Repository)reg.lookup(this.repo.getService_name());
-			System.out.println("mise à jours de mon passif");
+			System.out.println("mise ï¿½ jours de mon passif");
 			
 			for(String key_set : repo_actif.getMap().keySet()){
 				this.repo.setProperty(key_set, repo_actif.getProperty(key_set));
-				System.out.println("mise à jours de mon passif : " + this.repo.getProperty(key_set));
+				System.out.println("mise ï¿½ jours de mon passif : " + this.repo.getProperty(key_set));
 			}
 			
 		} catch (RemoteException | NotBoundException e) {

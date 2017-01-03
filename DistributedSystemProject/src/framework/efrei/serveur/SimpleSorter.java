@@ -1,9 +1,9 @@
-package efrei.serveur;
+package framework.efrei.serveur;
 
 import java.util.Collections;
 import java.util.List;
 
-import efrei.remote.Sorter;
+import framework.efrei.remote.Sorter;
 
 /**
  * A simple implementation of the <@link Sorter> using methods of class

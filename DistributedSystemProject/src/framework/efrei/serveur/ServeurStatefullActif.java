@@ -1,10 +1,10 @@
-package efrei.serveur;
+package framework.efrei.serveur;
 
 import java.net.InetAddress;
 import java.rmi.registry.*;
 import java.rmi.server.UnicastRemoteObject;
 
-import efrei.remote.*;
+import framework.efrei.remote.*;
 
 /**
  * Server program.

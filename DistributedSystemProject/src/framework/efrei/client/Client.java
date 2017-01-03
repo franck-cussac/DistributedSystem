@@ -1,11 +1,11 @@
-package efrei.client;
+package framework.efrei.client;
 
 import java.rmi.registry.*;
 import java.util.Arrays;
 import java.util.List;
 
-import efrei.remote.*;
-import efrei.serveur.LocateGlobalRegistry;
+import framework.efrei.remote.*;
+import framework.efrei.serveur.LocateGlobalRegistry;
 
 /**
  * Client program.

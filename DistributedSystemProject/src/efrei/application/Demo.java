@@ -1,4 +1,4 @@
-package efrei.demo;
+package efrei.application;
 
 
 import java.awt.*;
@@ -12,10 +12,10 @@ import java.util.List;
 
 import javax.swing.*;
 
-import efrei.client.Client;
-import efrei.remote.Repository;
-import efrei.remote.Sorter;
-import efrei.serveur.*;
+import framework.efrei.client.Client;
+import framework.efrei.remote.Repository;
+import framework.efrei.remote.Sorter;
+import framework.efrei.serveur.*;
 
 public class Demo {
 	

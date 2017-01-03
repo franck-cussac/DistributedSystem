@@ -1,4 +1,4 @@
-package efrei.serveur;
+package framework.efrei.serveur;
 
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
@@ -6,7 +6,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.*;
 
-import efrei.remote.Repository;
+import framework.efrei.remote.Repository;
 
 
 

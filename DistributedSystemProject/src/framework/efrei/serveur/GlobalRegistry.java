@@ -1,4 +1,4 @@
-package efrei.serveur;
+package framework.efrei.serveur;
 import java.rmi.AccessException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import efrei.remote.IStatefull;
-import efrei.remote.IStateless;
+import framework.efrei.remote.IStatefull;
+import framework.efrei.remote.IStateless;
 
 public class GlobalRegistry implements IGlobalRegistry {
 	
@@ -74,7 +74,7 @@ public class GlobalRegistry implements IGlobalRegistry {
 		return null;
 	}
 	
-	// retourne la liste des stubs qui correspond à un service
+	// retourne la liste des stubs qui correspond ï¿½ un service
 	@Override
 	public List<Remote> list(String service) throws RemoteException, AccessException {
 		return map.get(service);
