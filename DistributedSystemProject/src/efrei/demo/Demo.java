@@ -57,22 +57,22 @@ public class Demo {
 		
 		
 		// on cr�e les boutons
-		JButton add_client = new JButton("Tester toutes les requ�tes");
+		JButton add_client = new JButton("Tester toutes les requètes");
 		JButton add_server_stateless = new JButton("Ajouter un serveur stateless");
 		JButton add_server_statefull_actif = new JButton("Ajouter un serveur statefull actif");
 		JButton add_server_statefull_passif = new JButton("Ajouter un server statefull passif");
-		JButton request_stateless = new JButton("Envoyer une requ�te stateless");
-		JButton request_statefull_actif = new JButton("Envoyer une requ�te statefull actif");
-		JButton request_statefull_passif = new JButton("Envoyer une requ�te statefull passif");
+		JButton request_stateless = new JButton("Envoyer une requète stateless");
+		JButton request_statefull_actif = new JButton("Envoyer une requète statefull actif");
+		JButton request_statefull_passif = new JButton("Envoyer une requète statefull passif");
 		
 	    //On d�finit le layout en lui indiquant qu'il travaillera en ligne
 	    panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
-	    panel.add(add_client);
 	    panel.add(add_server_stateless);
 	    panel.add(add_server_statefull_actif);
 	    panel.add(add_server_statefull_passif);
 	    
 	    panel2.setLayout(new BoxLayout(panel2, BoxLayout.LINE_AXIS));
+	    panel2.add(add_client);
 	    panel2.add(request_stateless);
 	    panel2.add(request_statefull_actif);
 	    panel2.add(request_statefull_passif);
