@@ -47,26 +47,25 @@ public class Demo {
 		
 		JFrame frame = new JFrame("Demo");
 		frame.setSize(1200, 800);
-		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// on crée un panel qui s'organisera comme une grille de 4 par 9
+		// on crï¿½e un panel qui s'organisera comme une grille de 4 par 9
 		JPanel panel = new JPanel();
 		JPanel panel2 = new JPanel();
-		// on ajoute tout de suite le panel à notre fenètre
+		// on ajoute tout de suite le panel ï¿½ notre fenï¿½tre
 		panel.setVisible(true);
 		panel2.setVisible(true);
 		
 		
-		// on crée les boutons
-		JButton add_client = new JButton("Tester toutes les requêtes");
+		// on crï¿½e les boutons
+		JButton add_client = new JButton("Tester toutes les requï¿½tes");
 		JButton add_server_stateless = new JButton("Ajouter un serveur stateless");
 		JButton add_server_statefull_actif = new JButton("Ajouter un serveur statefull actif");
 		JButton add_server_statefull_passif = new JButton("Ajouter un server statefull passif");
-		JButton request_stateless = new JButton("Envoyer une requête stateless");
-		JButton request_statefull_actif = new JButton("Envoyer une requête statefull actif");
-		JButton request_statefull_passif = new JButton("Envoyer une requête statefull passif");
+		JButton request_stateless = new JButton("Envoyer une requï¿½te stateless");
+		JButton request_statefull_actif = new JButton("Envoyer une requï¿½te statefull actif");
+		JButton request_statefull_passif = new JButton("Envoyer une requï¿½te statefull passif");
 		
-	    //On définit le layout en lui indiquant qu'il travaillera en ligne
+	    //On dï¿½finit le layout en lui indiquant qu'il travaillera en ligne
 	    panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
 	    panel.add(add_client);
 	    panel.add(add_server_stateless);
@@ -240,5 +239,6 @@ public class Demo {
 				}
 			}
 		});
+		frame.setVisible(true);
 	}
 }
