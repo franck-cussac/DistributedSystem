@@ -172,7 +172,9 @@ public class Demo {
 				    list = sorter.sort(list);
 					textarea.setText(textarea.getText() + "received : " + list + "\n");
 				    list = Arrays.asList("mars", "saturne", "neptune", "jupiter");
+					textarea.setText(textarea.getText() + "sended : " + list + "\n");
 				    list = sorter.reverseSort(list);
+					textarea.setText(textarea.getText() + "received : " + list + "\n");
 				}
 				catch (RemoteException | NotBoundException e) {
 					// TODO Auto-generated catch block
@@ -189,8 +191,8 @@ public class Demo {
 			    try {
 					Registry registry = LocateGlobalRegistry.getRegistry(SERVICE_HOST);
 				    Repository repo = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_ACTIF);
-				    String key = "test";
-				    String value = "test value";
+				    String key = "my_key";
+				    String value = "my_value";
 					textarea.setText(textarea.getText() + "sended : key = " + key + " value = " + value + "\n");
 				    repo.setProperty(key, value);
 				    value = repo.getProperty(key);
@@ -217,21 +219,21 @@ public class Demo {
 				    Repository repo = (Repository) registry.lookup(SERVICE_NAME_STATEFULL_PASSIF);
 				    
 
-				    String key = "test";
-				    String value = "test value";
+				    String key = "my_key";
+				    String value = "my_value";
 					textarea.setText(textarea.getText() + "sended : key = " + key + " value = " + value + "\n");
 				    repo.setProperty(key, value);
 				    value = repo.getProperty(key);
 					textarea.setText(textarea.getText() + "received : key = " + key + " value = " + value + "\n");
 				    repo.removeProperty(key);
-					textarea.setText(textarea.getText() + "removed key = " + key + "\n");
+					textarea.setText(textarea.getText() + "removed : key = " + key + "\n");
 				    value = repo.getProperty(key);
 					textarea.setText(textarea.getText() + "get key = " + key + " value = " + value + "\n");
-					value = "test value2";
+					value = "my_value2";
 					textarea.setText(textarea.getText() + "sended : key = " + key + " value = " + value + "\n");
 				    repo.setProperty(key, value);
 				    value = repo.getProperty(key);
-					textarea.setText(textarea.getText() + "get key = " + key + " value = " + value + "\n");
+					textarea.setText(textarea.getText() + "get : key = " + key + " value = " + value + "\n");
 				}
 			    catch (RemoteException | NotBoundException e) {
 					// TODO Auto-generated catch block
